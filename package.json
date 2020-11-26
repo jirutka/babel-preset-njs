@@ -1,0 +1,56 @@
+{
+  "name": "babel-preset-njs",
+  "version": "0.0.0",
+  "description": "A Babel preset for njs - NGINX JavaScript.",
+  "author": "Jakub Jirutka <jakub@jirutka.cz>",
+  "license": "MIT",
+  "homepage": "https://github.com/jirutka/babel-preset-njs",
+  "bugs": "https://github.com/jirutka/babel-preset-njs/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jirutka/babel-preset-njs.git"
+  },
+  "keywords": [
+    "babel-preset",
+    "njs",
+    "nginx"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "prepublishOnly": "asciidoctor -b docbook -a npm-readme -o - README.adoc | pandoc -f docbook -t markdown_github -o README.md"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-export-namespace-from": "^7.12.1",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.12.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-proposal-optional-catch-binding": "^7.12.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+    "@babel/plugin-proposal-unicode-property-regex": "^7.12.1",
+    "@babel/plugin-transform-block-scoping": "^7.12.1",
+    "@babel/plugin-transform-classes": "^7.12.1",
+    "@babel/plugin-transform-destructuring": "^7.12.1",
+    "@babel/plugin-transform-dotall-regex": "^7.12.1",
+    "@babel/plugin-transform-for-of": "^7.12.1",
+    "@babel/plugin-transform-new-target": "^7.12.1",
+    "@babel/plugin-transform-object-super": "^7.12.1",
+    "@babel/plugin-transform-parameters": "^7.12.1",
+    "@babel/plugin-transform-spread": "^7.12.1",
+    "@babel/plugin-transform-unicode-escapes": "^7.12.1",
+    "@babel/plugin-transform-unicode-regex": "^7.12.1",
+    "babel-plugin-transform-async-to-promises": "^0.8.15"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.12.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.1",
+    "@babel/helper-plugin-utils": "^7.10.4",
+    "@babel/helper-validator-option": "^7.12.1"
+  }
+}
