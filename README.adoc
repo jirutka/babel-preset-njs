@@ -12,7 +12,8 @@ image:https://img.shields.io/npm/v/{npm-name}.svg[npm Version, link="https://www
 image:https://github.com/{gh-name}/workflows/{ci-workflow}/badge.svg[CI State, link=https://github.com/{gh-name}/actions?query=workflow%3A%22{ci-workflow}%22]
 endif::env-github[]
 
-A Babel preset for https://github.com/nginx/njs[njs] -- NGINX JavaScript.
+A https://babeljs.io[Babel] https://babeljs.io/docs/en/presets[preset] for transforming JavaScript code with modern language features into code compatible with https://github.com/nginx/njs[njs] (NGINX JavaScript).
+This preset includes support for all the ECMAScript features that TypeScript supports (https://tc39.es/process-document/[Stage] 3+).
 
 
 == Installation
