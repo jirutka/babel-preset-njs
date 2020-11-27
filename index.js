@@ -4,7 +4,6 @@ const { OptionValidator } = require('@babel/helper-validator-option')
 const proposalClassProperties = require('@babel/plugin-proposal-class-properties')
 const proposalExportNamespaceFrom = require('@babel/plugin-proposal-export-namespace-from')
 const proposalLogicalAssignmentOperators = require('@babel/plugin-proposal-logical-assignment-operators')
-const proposalNullishCoalescingOperator = require('@babel/plugin-proposal-nullish-coalescing-operator')
 const proposalObjectRestSpread = require('@babel/plugin-proposal-object-rest-spread')
 const proposalOptionalCatchBinding = require('@babel/plugin-proposal-optional-catch-binding')
 const proposalOptionalChaining = require('@babel/plugin-proposal-optional-chaining')
@@ -62,10 +61,6 @@ module.exports = declare((api, opts) => {
       }],
       [proposalExportNamespaceFrom],
       [proposalLogicalAssignmentOperators],
-      [proposalNullishCoalescingOperator, {
-        // This is more performant and completely safe in non-browser environment.
-        loose: true,
-      }],
       [proposalObjectRestSpread, {
         // Use `Object.assign()` instead of special helper. This is more performant, but it might
         // produce unexpected results in some (corner) cases (when overwriting read-only target
