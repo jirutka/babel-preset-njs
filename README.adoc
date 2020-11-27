@@ -80,7 +80,6 @@ It sets the following plugin options:
 * {babel-doc-uri}/babel-plugin-transform-for-of#assumearray[for-of]: `assumeArray`
 * {babel-doc-uri}/babel-plugin-transform-spread#loose[spread]: `loose`
 * {babel-doc-uri}/babel-plugin-transform-destructuring#loose[destructuring]: `loose`
-* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object#loose[private-property-in-object]: `loose`
 
 
 === `looseClasses`
@@ -94,6 +93,7 @@ It sets the following plugin options:
 
 * {babel-doc-uri}/babel-plugin-transform-classes#loose[classes]: `loose`
 * {babel-doc-uri}/babel-plugin-proposal-class-properties#loose[class-properties]: `loose`
+* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object#loose[private-property-in-object]: `loose`
 
 
 === `looseObjectRestSpread`
