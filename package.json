@@ -24,6 +24,8 @@
     "prepublishOnly": "asciidoctor -b docbook -a npm-readme -o - README.adoc | pandoc -f docbook -t gfm --base-header-level 2 -o README.md"
   },
   "dependencies": {
+    "@babel/helper-plugin-utils": "^7.10.4",
+    "@babel/helper-validator-option": "^7.12.1",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-export-namespace-from": "^7.12.1",
     "@babel/plugin-proposal-logical-assignment-operators": "^7.12.1",
@@ -49,8 +51,6 @@
     "@babel/core": "^7.12.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.1",
-    "@babel/helper-plugin-utils": "^7.10.4",
-    "@babel/helper-validator-option": "^7.12.1"
+    "@babel/core": "^7.12.1"
   }
 }
