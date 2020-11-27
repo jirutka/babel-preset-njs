@@ -79,6 +79,7 @@ It sets the following plugin options:
 * {babel-doc-uri}/babel-plugin-transform-for-of#assumearray[for-of]: `assumeArray`
 * {babel-doc-uri}/babel-plugin-transform-spread#loose[spread]: `loose`
 * {babel-doc-uri}/babel-plugin-transform-destructuring#loose[destructuring]: `loose`
+* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object#loose[private-property-in-object]: `loose`
 
 
 === `looseClasses`
@@ -128,6 +129,7 @@ This preset includes the following transform plugins:
 * {babel-doc-uri}/babel-plugin-proposal-object-rest-spread[object-rest-spread]
 * {babel-doc-uri}/babel-plugin-proposal-optional-catch-binding[optional-catch-binding]
 * {babel-doc-uri}/babel-plugin-proposal-optional-chaining[optional-chaining]
+* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object[private-property-in-object]
 * {babel-doc-uri}/babel-plugin-proposal-unicode-property-regex[unicode-property-regex]
 * {babel-doc-uri}/babel-plugin-transform-block-scoping[block-scoping]
 * {babel-doc-uri}/babel-plugin-transform-classes[classes]

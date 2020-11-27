@@ -32,6 +32,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/plugin-proposal-optional-catch-binding": "^7.12.1",
     "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+    "@babel/plugin-proposal-private-property-in-object": "^7.12.1",
     "@babel/plugin-proposal-unicode-property-regex": "^7.12.1",
     "@babel/plugin-transform-block-scoping": "^7.12.1",
     "@babel/plugin-transform-classes": "^7.12.1",
