@@ -124,26 +124,26 @@ It sets the following plugin options:
 
 This preset includes the following transform plugins:
 
-* {babel-doc-uri}/babel-plugin-proposal-class-properties[class-properties]
-* {babel-doc-uri}/babel-plugin-proposal-export-namespace-from[export-namespace-from]
-* {babel-doc-uri}/babel-plugin-proposal-logical-assignment-operators[logical-assignment-operators]
-* {babel-doc-uri}/babel-plugin-proposal-object-rest-spread[object-rest-spread]
-* {babel-doc-uri}/babel-plugin-proposal-optional-catch-binding[optional-catch-binding]
-* {babel-doc-uri}/babel-plugin-proposal-optional-chaining[optional-chaining]
-* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object[private-property-in-object]
-* {babel-doc-uri}/babel-plugin-proposal-unicode-property-regex[unicode-property-regex]
+* https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]
 * {babel-doc-uri}/babel-plugin-transform-block-scoping[block-scoping]
+* {babel-doc-uri}/babel-plugin-proposal-class-properties[class-properties]
 * {babel-doc-uri}/babel-plugin-transform-classes[classes]
 * {babel-doc-uri}/babel-plugin-transform-destructuring[destructuring]
 * {babel-doc-uri}/babel-plugin-transform-dotall-regex[dotall-regex]
+* {babel-doc-uri}/babel-plugin-proposal-export-namespace-from[export-namespace-from]
 * {babel-doc-uri}/babel-plugin-transform-for-of[for-of]
+* {babel-doc-uri}/babel-plugin-proposal-logical-assignment-operators[logical-assignment-operators]
 * {babel-doc-uri}/babel-plugin-transform-new-target[new-target]
+* {babel-doc-uri}/babel-plugin-proposal-object-rest-spread[object-rest-spread]
 * {babel-doc-uri}/babel-plugin-transform-object-super[object-super]
+* {babel-doc-uri}/babel-plugin-proposal-optional-catch-binding[optional-catch-binding]
+* {babel-doc-uri}/babel-plugin-proposal-optional-chaining[optional-chaining]
 * {babel-doc-uri}/babel-plugin-transform-parameters[parameters]
+* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object[private-property-in-object]
 * {babel-doc-uri}/babel-plugin-transform-spread[spread]
 * {babel-doc-uri}/babel-plugin-transform-unicode-escapes[unicode-escapes]
+* {babel-doc-uri}/babel-plugin-proposal-unicode-property-regex[unicode-property-regex]
 * {babel-doc-uri}/babel-plugin-transform-unicode-regex[unicode-regex]
-* https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]
 
 
 == References
