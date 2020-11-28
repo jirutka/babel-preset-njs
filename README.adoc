@@ -83,6 +83,20 @@ It sets the following plugin options:
 * {babel-doc-uri}/babel-plugin-transform-destructuring#loose[destructuring]: `loose`
 
 
+=== `asyncHelpers`
+`'external'`, `'local'`, `'inline'`
+
+Toggles how https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises] injects its helpers:
+
+* `'external'` -- injects import from `babel-plugin-transform-async-to-promises/helpers` into each file with async/await
+* `'local'` -- injects the needed helper functions into each file with async/await
+* `'inline'` -- inlines the needed helper code in place of each occurrence of async/await
+
+Defaults to `'external'` if Rollup or webpack is detected, otherwise `'local'`.
+
+* https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]: `externalHelpers`, `inlineHelpers`
+
+
 === `looseClasses`
 `boolean`, defaults to `true`
 
