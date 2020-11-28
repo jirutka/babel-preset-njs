@@ -1,6 +1,7 @@
 = babel-preset-njs
 :npm-name: babel-preset-njs
 :gh-name: jirutka/{npm-name}
+:gh-branch: master
 :ci-workflow: npmjs
 :babel-doc-uri: https://babeljs.io/docs/en
 :object-rest-spread-mdn-uri: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals
@@ -13,7 +14,7 @@ image:https://github.com/{gh-name}/workflows/{ci-workflow}/badge.svg[CI State, l
 endif::env-github[]
 
 A https://babeljs.io[Babel] https://babeljs.io/docs/en/presets[preset] for transforming JavaScript code with modern language features into code compatible with https://github.com/nginx/njs[njs] (NGINX JavaScript).
-This preset includes support for all the ECMAScript features that TypeScript supports (https://tc39.es/process-document/[Stage] 3+).
+This preset includes support for all the ECMAScript features that TypeScript supports (https://tc39.es/process-document/[Stage] 3+) -- see <<Plugins>> for a complete list.
 
 
 == Installation
@@ -120,31 +121,236 @@ It sets the following plugin options:
 * {babel-doc-uri}/babel-plugin-transform-parameters#loose[parameters]: `loose`
 
 
-== Included Plugins
+== Plugins
+:babel-plugin-uri: https://babeljs.io/docs/en/babel-plugin
+:included: ✓{nbsp}included
+:not-needed: ✗{nbsp}not{nbsp}needed
+:incompatible: ⚠{nbsp}incompatible
 
-This preset includes the following transform plugins:
+ifdef::npm-readme[]
+The list of included Babel plugins is available https://github.com/{gh-name}/blob/{gh-branch}/README.adoc#plugins[here].
 
-* https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]
-* {babel-doc-uri}/babel-plugin-transform-block-scoping[block-scoping]
-* {babel-doc-uri}/babel-plugin-proposal-class-properties[class-properties]
-* {babel-doc-uri}/babel-plugin-transform-classes[classes]
-* {babel-doc-uri}/babel-plugin-transform-destructuring[destructuring]
-* {babel-doc-uri}/babel-plugin-transform-dotall-regex[dotall-regex]
-* {babel-doc-uri}/babel-plugin-proposal-export-namespace-from[export-namespace-from]
-* {babel-doc-uri}/babel-plugin-transform-for-of[for-of]
-* {babel-doc-uri}/babel-plugin-proposal-logical-assignment-operators[logical-assignment-operators]
-* {babel-doc-uri}/babel-plugin-transform-new-target[new-target]
-* {babel-doc-uri}/babel-plugin-proposal-object-rest-spread[object-rest-spread]
-* {babel-doc-uri}/babel-plugin-transform-object-super[object-super]
-* {babel-doc-uri}/babel-plugin-proposal-optional-catch-binding[optional-catch-binding]
-* {babel-doc-uri}/babel-plugin-proposal-optional-chaining[optional-chaining]
-* {babel-doc-uri}/babel-plugin-transform-parameters[parameters]
-* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object[private-property-in-object]
-* {babel-doc-uri}/babel-plugin-transform-spread[spread]
-* {babel-doc-uri}/babel-plugin-transform-unicode-escapes[unicode-escapes]
-* {babel-doc-uri}/babel-plugin-proposal-unicode-property-regex[unicode-property-regex]
-* {babel-doc-uri}/babel-plugin-transform-unicode-regex[unicode-regex]
+endif::npm-readme[]
+ifndef::npm-readme[]
+The following table lists all relevant https://babeljs.io/docs/en/plugins#transform-plugins[Babel transform plugins] for ECMAScript features in at least https://tc39.es/process-document/[stage 3].
 
+The *State* column is one of:
+
+* {included} -- The plugin is included in this preset, i.e. njs doesn’t support this feature (or part of it) yet.
+* {not-needed} -- The plugin is not needed, i.e. njs already supports this feature.
+* {incompatible} -- The plugin is not compatible with njs, i.e. requires features that njs doesn’t support yet.
+
+[cols="30,10,20,40"]
+|===
+| Plugin | ECMAScript | State | Notes
+
+| {babel-plugin-uri}-transform-member-expression-literals[member-expression-literals]
+| ES3
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-property-literals[property-literals]
+| ES3
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-property-mutators[property-mutators]
+| ES5
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-reserved-words[reserved-words]
+| ES3
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-arrow-functions[arrow-functions]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-block-scoped-functions[block-scoped-functions]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-block-scoping[block-scoping]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-classes[classes]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-computed-properties[computed-properties]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-destructuring[destructuring]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-duplicate-keys[duplicate-keys]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-for-of[for-of]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-function-name[function-name]
+| ES2015
+| {incompatible}
+| https://github.com/nginx/njs/issues/360[njs bug #360]
+
+| {babel-plugin-uri}-transform-instanceof[instanceof]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-literals[literals]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-new-target[new-target]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-object-super[object-super]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-parameters[parameters]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-shorthand-properties[shorthand-properties]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-spread[spread]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-sticky-regex[sticky-regex]
+| ES2015
+| {incompatible}
+| njs doesn’t support regexp flag `y` at all
+
+| {babel-plugin-uri}-transform-template-literals[template-literals]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-typeof-symbol[typeof-symbol]
+| ES2015
+| {not-needed}
+|
+
+| {babel-plugin-uri}-transform-unicode-escapes[unicode-escapes]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-unicode-regex[unicode-regex]
+| ES2015
+| {included}
+|
+
+| {babel-plugin-uri}-transform-exponentiation-operator[exponentiation-operator]
+| ES2016
+| {not-needed}
+|
+
+| https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]
+| ES2017
+| {included}
+| This is a third-party plugin, i.e. not included in any Babel presets.
+
+| {babel-plugin-uri}-transform-async-to-generator[async-to-generator]
+| ES2017
+| {incompatible}
+| njs doesn’t support generators yes; replaced by https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]
+
+| {babel-plugin-uri}-proposal-async-generator-functions[async-generator-functions]
+| ES2018
+| {incompatible}
+| njs doesn’t support generators yet
+
+| {babel-plugin-uri}-transform-dotall-regex[dotall-regex]
+| ES2017
+| {included}
+|
+
+| {babel-plugin-uri}-transform-named-capturing-groups-regex[named-capturing-groups-regex]
+| ES2018
+| {not-needed}
+|
+
+| {babel-plugin-uri}-proposal-object-rest-spread[object-rest-spread]
+| ES2018
+| {included}
+|
+
+| {babel-plugin-uri}-proposal-unicode-property-regex[unicode-property-regex]
+| ES2018
+| {included}
+|
+
+| {babel-plugin-uri}-proposal-optional-catch-binding[optional-catch-binding]
+| ES2019
+| {included}
+|
+
+| {babel-plugin-uri}-proposal-export-namespace-from[export-namespace-from]
+| ES2020
+| {included}
+|
+
+| {babel-plugin-uri}-proposal-nullish-coalescing-operator[nullish-coalescing-operator]
+| ES2020
+| {not-needed}
+|
+
+| {babel-plugin-uri}-proposal-private-property-in-object[private-property-in-object]
+| ES2020
+| {included}
+|
+
+| {babel-plugin-uri}-proposal-optional-chaining[optional-chaining]
+| ES2020
+| {included}
+|
+
+| {babel-plugin-uri}-proposal-logical-assignment-operators[logical-assignment-operators]
+| https://github.com/tc39/proposal-logical-assignment[Stage 4]
+| {included}
+|
+
+| {babel-plugin-uri}-proposal-numeric-separator[numeric-separator]
+| https://github.com/tc39/proposal-numeric-separator[Stage 4]
+| {not-needed}
+|
+
+| {babel-plugin-uri}-proposal-class-properties[class-properties]
+| https://github.com/tc39/proposal-class-fields[Stage 3]
+| {included}
+|
+|===
+
+endif::npm-readme[]
 
 == References
 
