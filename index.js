@@ -126,7 +126,9 @@ module.exports = declare((api, opts) => {
       [transformUnicodeRegex],
       // Transform async functions containing await expressions to the equivalent chain of Promise
       // calls with use of minimal helper functions.
-      [transformAsyncToPromises],
+      [transformAsyncToPromises, {
+        target: 'es6',
+      }],
     ],
   }
 })
