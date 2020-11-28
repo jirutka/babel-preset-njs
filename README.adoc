@@ -70,7 +70,7 @@ require('@babel/core').transform('code', {
 === `assumeArrayIterables`
 `boolean`, defaults to `true`
 
-Assume that all iterables used in `for...of` loops, {array-spread-mdn-uri}[array spread syntax] and {array-destructuring-mdn-uri}[array destructuring] are arrays.
+Assume that all iterables used in `for\...of` loops, {array-spread-mdn-uri}[array spread syntax] and {array-destructuring-mdn-uri}[array destructuring] are arrays.
 This produces more compact and significantly more performant code, but it will fail in runtime if the iterable is not an array.
 
 TypeScript transpiler uses the same approach for ES5 target when `downlevelIteration` is disabled.
