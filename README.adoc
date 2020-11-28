@@ -94,6 +94,8 @@ Toggles how https://github.com/rpetrich/babel-plugin-transform-async-to-promises
 
 Defaults to `'external'` if Rollup or webpack is detected, otherwise `'local'`.
 
+It sets the following plugin options:
+
 * https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]: `externalHelpers`, `inlineHelpers`
 
 
