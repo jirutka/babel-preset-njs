@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-njs",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A Babel preset for njs - NGINX JavaScript.",
   "author": "Jakub Jirutka <jakub@jirutka.cz>",
   "license": "MIT",
