@@ -102,10 +102,7 @@ module.exports = declare((api, opts) => {
         // njs doesn't support unicode flag yet (`/foo/u`).
         useUnicodeFlag: true,
       }],
-      [transformBlockScoping, {
-        // Throw when it's impossible to rewrite let/const without adding an additional function.
-        throwIfClosureRequired: true,
-      }],
+      [transformBlockScoping],
       [transformClasses, {
         // This is more performant, but it might produce unexpected results in some (corner) cases.
         // Also it matches behaviour TypeScript's transpiler.
