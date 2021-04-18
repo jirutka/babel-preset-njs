@@ -16,6 +16,8 @@ endif::env-github[]
 A https://babeljs.io[Babel] https://babeljs.io/docs/en/presets[preset] for transforming JavaScript code with modern language features into code compatible with https://github.com/nginx/njs[njs] (NGINX JavaScript).
 This preset includes support for all the ECMAScript features that TypeScript supports (https://tc39.es/process-document/[Stage] 3+) -- see <<Plugins>> for a complete list.
 
+**TIP:** Take a look at https://github.com/jirutka/njs-typescript-starter[njs-typescript-starter] for a complete starter template for developing njs scripts for https://nginx.org[NGINX] server in https://www.typescriptlang.org[TypeScript] (including integration tests).
+
 
 == Installation
 
