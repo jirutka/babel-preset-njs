@@ -264,8 +264,8 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-transform-sticky-regex[sticky-regex]
 | ES2015
-| {incompatible}
-| njs doesn’t support regexp flag `y` at all
+| {not-needed}
+| njs supports regexp flag `y` starting from https://nginx.org/en/docs/njs/changes.html#njs0.6.0[v0.6.0]
 
 | {babel-plugin-uri}-transform-template-literals[template-literals]
 | ES2015
