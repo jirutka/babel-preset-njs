@@ -20,32 +20,12 @@ const transformParameters = require('@babel/plugin-transform-parameters')
 const transformSpread = require('@babel/plugin-transform-spread')
 const transformUnicodeEscapes = require('@babel/plugin-transform-unicode-escapes')
 const transformUnicodeRegex = require('@babel/plugin-transform-unicode-regex')
-const transformAsyncToPromises = require('babel-plugin-transform-async-to-promises')
 
 
 const v = new OptionValidator('babel-preset-njs')
 
-const asyncHelpersValues = ['external', 'local', 'inline']
-
-const bundlers = [
-  '@rollup/plugin-babel',
-  'babel-loader',  // webpack
-]
-
 module.exports = declare((api, opts) => {
   api.assertVersion(7)
-
-  const callerName = api.caller(c => c.name)
-
-  const asyncHelpers = v.validateStringOption(
-    'asyncHelpers',
-    opts.asyncHelpers,
-    bundlers.includes(callerName) ? 'external' : 'local',
-  )
-  if (!asyncHelpersValues.includes(asyncHelpers)) {
-    const allowedValues = asyncHelpersValues.map(x => `'${x}'`).join(', ')
-    throw Error(`'asyncHelpers' option must be one of: ${allowedValues}, but given: '${asyncHelpers}'`)
-  }
 
   const assumeArrayIterables = v.validateBooleanOption(
     'assumeArrayIterables',
@@ -140,13 +120,6 @@ module.exports = declare((api, opts) => {
       }],
       [transformUnicodeEscapes],
       [transformUnicodeRegex],
-      // Transform async functions containing await expressions to the equivalent chain of Promise
-      // calls with use of minimal helper functions.
-      [transformAsyncToPromises, {
-        target: 'es6',
-        externalHelpers: asyncHelpers === 'external',
-        inlineHelpers: asyncHelpers === 'inline',
-      }],
     ],
   }
 })

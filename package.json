@@ -44,8 +44,7 @@
     "@babel/plugin-transform-parameters": "^7.12.1",
     "@babel/plugin-transform-spread": "^7.12.1",
     "@babel/plugin-transform-unicode-escapes": "^7.12.1",
-    "@babel/plugin-transform-unicode-regex": "^7.12.1",
-    "babel-plugin-transform-async-to-promises": "^0.8.15"
+    "@babel/plugin-transform-unicode-regex": "^7.12.1"
   },
   "peerDependencies": {
     "@babel/core": "^7.12.1"
