@@ -9,7 +9,6 @@ const proposalOptionalCatchBinding = require('@babel/plugin-proposal-optional-ca
 const proposalOptionalChaining = require('@babel/plugin-proposal-optional-chaining')
 const proposalPrivatePropertyInObject = require('@babel/plugin-proposal-private-property-in-object')
 const proposalUnicodePropertyRegex = require('@babel/plugin-proposal-unicode-property-regex')
-const transformBlockScoping = require('@babel/plugin-transform-block-scoping')
 const transformClasses = require('@babel/plugin-transform-classes')
 const transformDestructuring = require('@babel/plugin-transform-destructuring')
 const transformDotallRegex = require('@babel/plugin-transform-dotall-regex')
@@ -18,34 +17,13 @@ const transformNewTarget = require('@babel/plugin-transform-new-target')
 const transformObjectSuper = require('@babel/plugin-transform-object-super')
 const transformParameters = require('@babel/plugin-transform-parameters')
 const transformSpread = require('@babel/plugin-transform-spread')
-const transformUnicodeEscapes = require('@babel/plugin-transform-unicode-escapes')
 const transformUnicodeRegex = require('@babel/plugin-transform-unicode-regex')
-const transformAsyncToPromises = require('babel-plugin-transform-async-to-promises')
 
 
 const v = new OptionValidator('babel-preset-njs')
 
-const asyncHelpersValues = ['external', 'local', 'inline']
-
-const bundlers = [
-  '@rollup/plugin-babel',
-  'babel-loader',  // webpack
-]
-
 module.exports = declare((api, opts) => {
   api.assertVersion(7)
-
-  const callerName = api.caller(c => c.name)
-
-  const asyncHelpers = v.validateStringOption(
-    'asyncHelpers',
-    opts.asyncHelpers,
-    bundlers.includes(callerName) ? 'external' : 'local',
-  )
-  if (!asyncHelpersValues.includes(asyncHelpers)) {
-    const allowedValues = asyncHelpersValues.map(x => `'${x}'`).join(', ')
-    throw Error(`'asyncHelpers' option must be one of: ${allowedValues}, but given: '${asyncHelpers}'`)
-  }
 
   const assumeArrayIterables = v.validateBooleanOption(
     'assumeArrayIterables',
@@ -102,7 +80,6 @@ module.exports = declare((api, opts) => {
         // njs doesn't support unicode flag yet (`/foo/u`).
         useUnicodeFlag: false,
       }],
-      [transformBlockScoping],
       [transformClasses, {
         // This is more performant, but it might produce unexpected results in some (corner) cases.
         // Also it matches behaviour TypeScript's transpiler.
@@ -138,15 +115,7 @@ module.exports = declare((api, opts) => {
         // `downlevelIteration` and TypeScript also warns you when used for non-array.
         loose: assumeArrayIterables,
       }],
-      [transformUnicodeEscapes],
       [transformUnicodeRegex],
-      // Transform async functions containing await expressions to the equivalent chain of Promise
-      // calls with use of minimal helper functions.
-      [transformAsyncToPromises, {
-        target: 'es6',
-        externalHelpers: asyncHelpers === 'external',
-        inlineHelpers: asyncHelpers === 'inline',
-      }],
     ],
   }
 })

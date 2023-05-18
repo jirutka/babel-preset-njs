@@ -13,7 +13,7 @@ image:https://img.shields.io/npm/v/{npm-name}.svg[npm Version, link="https://www
 image:https://github.com/{gh-name}/workflows/{ci-workflow}/badge.svg[CI State, link=https://github.com/{gh-name}/actions?query=workflow%3A%22{ci-workflow}%22]
 endif::env-github[]
 
-A https://babeljs.io[Babel] https://babeljs.io/docs/en/presets[preset] for transforming JavaScript code with modern language features into code compatible with https://github.com/nginx/njs[njs] (NGINX JavaScript).
+A https://babeljs.io[Babel] https://babeljs.io/docs/en/presets[preset] for transforming JavaScript code with modern language features into code compatible with https://github.com/nginx/njs[njs] ≥0.7.0 (NGINX JavaScript).
 This preset includes support for all the ECMAScript features that TypeScript supports (https://tc39.es/process-document/[Stage] 3+) -- see <<Plugins>> for a complete list.
 
 **TIP:** Take a look at https://github.com/jirutka/njs-typescript-starter[njs-typescript-starter] for a complete starter template for developing njs scripts for https://nginx.org[NGINX] server in https://www.typescriptlang.org[TypeScript] (including integration tests).
@@ -83,22 +83,6 @@ It sets the following plugin options:
 * {babel-doc-uri}/babel-plugin-transform-for-of#assumearray[for-of]: `assumeArray`
 * {babel-doc-uri}/babel-plugin-transform-spread#loose[spread]: `loose`
 * {babel-doc-uri}/babel-plugin-transform-destructuring#loose[destructuring]: `loose`
-
-
-=== `asyncHelpers`
-`'external'`, `'local'`, `'inline'`
-
-Toggles how https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises] injects its helpers:
-
-* `'external'` -- injects import from `babel-plugin-transform-async-to-promises/helpers` into each file with async/await
-* `'local'` -- injects the needed helper functions into each file with async/await
-* `'inline'` -- inlines the needed helper code in place of each occurrence of async/await
-
-Defaults to `'external'` if Rollup or webpack is detected, otherwise `'local'`.
-
-It sets the following plugin options:
-
-* https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]: `externalHelpers`, `inlineHelpers`
 
 
 === `looseClasses`
@@ -194,8 +178,8 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-transform-block-scoping[block-scoping]
 | ES2015
-| {included}
-|
+| {not-needed}
+| since njs 0.6.0
 
 | {babel-plugin-uri}-transform-classes[classes]
 | ES2015
@@ -204,8 +188,8 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-transform-computed-properties[computed-properties]
 | ES2015
-| {included}
-|
+| {not-needed}
+| since njs 0.3.4
 
 | {babel-plugin-uri}-transform-destructuring[destructuring]
 | ES2015
@@ -250,7 +234,7 @@ The *State* column is one of:
 | {babel-plugin-uri}-transform-parameters[parameters]
 | ES2015
 | {included}
-|
+| Only rest parameters are supported.
 
 | {babel-plugin-uri}-transform-shorthand-properties[shorthand-properties]
 | ES2015
@@ -264,8 +248,8 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-transform-sticky-regex[sticky-regex]
 | ES2015
-| {incompatible}
-| njs doesn’t support regexp flag `y` at all
+| {not-needed}
+| since njs 0.6.0
 
 | {babel-plugin-uri}-transform-template-literals[template-literals]
 | ES2015
@@ -279,8 +263,8 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-transform-unicode-escapes[unicode-escapes]
 | ES2015
-| {included}
-|
+| {not-needed}
+| Supported, but not in identifiers (e.g. variable name).
 
 | {babel-plugin-uri}-transform-unicode-regex[unicode-regex]
 | ES2015
@@ -292,15 +276,10 @@ The *State* column is one of:
 | {not-needed}
 |
 
-| https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]
-| ES2017
-| {included}
-| This is a third-party plugin, i.e. not included in any Babel presets.
-
 | {babel-plugin-uri}-transform-async-to-generator[async-to-generator]
 | ES2017
-| {incompatible}
-| njs doesn’t support generators yes; replaced by https://github.com/rpetrich/babel-plugin-transform-async-to-promises[async-to-promises]
+| {not-needed}
+| since njs 0.7.0
 
 | {babel-plugin-uri}-proposal-async-generator-functions[async-generator-functions]
 | ES2018
@@ -334,13 +313,13 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-proposal-json-strings[json-strings]
 | ES2019
-|
+| {not-needed}
 |
 
 | {babel-plugin-uri}-proposal-dynamic-import[dynamic-import]
 | ES2020
-|
-|
+| {incompatible}
+| njs has only limited support of ES modules.
 
 | {babel-plugin-uri}-proposal-export-namespace-from[export-namespace-from]
 | ES2020
