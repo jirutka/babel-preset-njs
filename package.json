@@ -24,30 +24,30 @@
     "prepublishOnly": "asciidoctor -b docbook -a npm-readme -a gh-branch=v$npm_package_version -o - README.adoc | pandoc -f docbook -t gfm --base-header-level 2 -o README.md"
   },
   "dependencies": {
-    "@babel/helper-plugin-utils": "^7.10.4",
-    "@babel/helper-validator-option": "^7.12.1",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-export-namespace-from": "^7.12.1",
-    "@babel/plugin-proposal-logical-assignment-operators": "^7.12.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-proposal-optional-catch-binding": "^7.12.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
-    "@babel/plugin-proposal-private-property-in-object": "^7.12.1",
-    "@babel/plugin-proposal-unicode-property-regex": "^7.12.1",
-    "@babel/plugin-transform-classes": "^7.12.1",
-    "@babel/plugin-transform-destructuring": "^7.12.1",
-    "@babel/plugin-transform-dotall-regex": "^7.12.1",
-    "@babel/plugin-transform-for-of": "^7.12.1",
-    "@babel/plugin-transform-new-target": "^7.12.1",
-    "@babel/plugin-transform-object-super": "^7.12.1",
-    "@babel/plugin-transform-parameters": "^7.12.1",
-    "@babel/plugin-transform-spread": "^7.12.1",
-    "@babel/plugin-transform-unicode-regex": "^7.12.1"
+    "@babel/helper-plugin-utils": "^7.21.5",
+    "@babel/helper-validator-option": "^7.21.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.20.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-proposal-optional-catch-binding": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
+    "@babel/plugin-proposal-unicode-property-regex": "^7.18.6",
+    "@babel/plugin-transform-classes": "^7.21.0",
+    "@babel/plugin-transform-destructuring": "^7.21.3",
+    "@babel/plugin-transform-dotall-regex": "^7.18.6",
+    "@babel/plugin-transform-for-of": "^7.21.5",
+    "@babel/plugin-transform-new-target": "^7.18.6",
+    "@babel/plugin-transform-object-super": "^7.18.6",
+    "@babel/plugin-transform-parameters": "^7.21.3",
+    "@babel/plugin-transform-spread": "^7.20.7",
+    "@babel/plugin-transform-unicode-regex": "^7.18.6"
   },
   "peerDependencies": {
-    "@babel/core": "^7.12.1"
+    "@babel/core": "^7.21.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.1"
+    "@babel/core": "^7.21.8"
   }
 }
