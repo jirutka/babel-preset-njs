@@ -1,4 +1,4 @@
-const { declare } = require('@babel/helper-plugin-utils')
+const { declarePreset } = require('@babel/helper-plugin-utils')
 
 const proposalExportNamespaceFrom = require('@babel/plugin-proposal-export-namespace-from')
 const proposalLogicalAssignmentOperators = require('@babel/plugin-proposal-logical-assignment-operators')
@@ -17,7 +17,7 @@ const transformSpread = require('@babel/plugin-transform-spread')
 const transformUnicodeRegex = require('@babel/plugin-transform-unicode-regex')
 
 
-module.exports = declare((api, _opts) => {
+module.exports = declarePreset((api, _opts) => {
   api.assertVersion(7)
 
   return {
