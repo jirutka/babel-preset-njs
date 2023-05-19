@@ -1,5 +1,4 @@
 const { declare } = require('@babel/helper-plugin-utils')
-const { OptionValidator } = require('@babel/helper-validator-option')
 
 const proposalExportNamespaceFrom = require('@babel/plugin-proposal-export-namespace-from')
 const proposalLogicalAssignmentOperators = require('@babel/plugin-proposal-logical-assignment-operators')
@@ -18,91 +17,78 @@ const transformSpread = require('@babel/plugin-transform-spread')
 const transformUnicodeRegex = require('@babel/plugin-transform-unicode-regex')
 
 
-const v = new OptionValidator('babel-preset-njs')
-
-module.exports = declare((api, opts) => {
+module.exports = declare((api, _opts) => {
   api.assertVersion(7)
 
-  const assumeArrayIterables = v.validateBooleanOption(
-    'assumeArrayIterables',
-    opts.assumeArrayIterables,
-    true,
-  )
-
-  const looseClasses = v.validateBooleanOption(
-    'looseClasses',
-    opts.looseClasses,
-    true,
-  )
-
-  const looseObjectRestSpread = v.validateBooleanOption(
-    'looseObjectRestSpread',
-    opts.looseObjectRestSpread,
-    true,
-  )
-
-  const looseParameters = v.validateBooleanOption(
-    'looseParameters',
-    opts.looseParameters,
-    true,
-  )
-
   return {
+    assumptions: {
+      // This is more performant, but it might produce unexpected results in some (corner) cases.
+      // Also it matches behaviour TypeScript's transpiler.
+      //
+      // https://babeljs.io/docs/babel-plugin-transform-classes#loose
+      // https://babeljs.io/docs/assumptions#constantsuper
+      // https://babeljs.io/docs/assumptions#noclasscalls
+      // https://babeljs.io/docs/assumptions#setclassmethods
+      // https://babeljs.io/docs/assumptions#superiscallableconstructor
+      constantSuper: true,
+      noClassCalls: true,
+      setClassMethods: true,
+      superIsCallableConstructor: true,
+
+      // This is more performant, but default values will be counted into the arity of the function
+      // which is against spec. Also it matches behaviour of TypeScript's transpiler.
+      //
+      // https://babeljs.io/docs/assumptions#ignorefunctionlength
+      // https://babeljs.io/docs/babel-plugin-transform-parameters#loose
+      ignoreFunctionLength: true,
+
+      // Assume that all iterables are arrays. This much more performant, but produces a wrong result
+      // for non-arrays. This matches behaviour of TypeScript transpiler with disabled
+      // `downlevelIteration` and TypeScript also warns you when used for non-array.
+      //
+      // https://babeljs.io/docs/babel-plugin-transform-for-of#assumearray
+      // https://babeljs.io/docs/babel-plugin-transform-spread#loose
+      // https://babeljs.io/docs/babel-plugin-transform-destructuring#loose
+      iterableIsArray: true,
+
+      // njs is not a browser.
+      noDocumentAll: true,
+
+      // This is enabled by default on Babel 7.
+      noNewArrows: true,
+
+      // Use `Object.assign()` instead of special helper. This is more performant, but it might
+      // produce unexpected results in some (corner) cases (when overwriting read-only target
+      // property). Also it matches behaviour TypeScript's transpiler.
+      //
+      // https://babeljs.io/docs/assumptions#setspreadproperties
+      // https://babeljs.io/docs/babel-plugin-proposal-object-rest-spread#loose
+      setSpreadProperties: true,
+    },
     plugins: [
       [proposalExportNamespaceFrom],
       [proposalLogicalAssignmentOperators],
       [proposalObjectRestSpread, {
-        // Use `Object.assign()` instead of special helper. This is more performant, but it might
-        // produce unexpected results in some (corner) cases (when overwriting read-only target
-        // property). Also it matches behaviour TypeScript's transpiler.
-        loose: looseObjectRestSpread,
         // njs has `Object.assign()`, so use it directly instead of the Babel's extends helper.
         useBuiltIns: true,
       }],
       [proposalOptionalCatchBinding],
-      [proposalOptionalChaining, {
-        // This is more performant and completely safe in non-browser environment.
-        loose: true,
-      }],
+      [proposalOptionalChaining],
       [proposalUnicodePropertyRegex, {
         // njs doesn't support unicode flag yet (`/foo/u`).
         useUnicodeFlag: false,
       }],
-      [transformClasses, {
-        // This is more performant, but it might produce unexpected results in some (corner) cases.
-        // Also it matches behaviour TypeScript's transpiler.
-        loose: looseClasses,
-      }],
+      [transformClasses],
       [transformDestructuring, {
-        // Assume that what you want to destructure is an array. This is more performant, but
-        // produces a wrong result if the value to destructure is not an array. It matches behaviour
-        // of TypeScript transpiler with disabled `downlevelIteration` and TypeScript also warns you
-        // when used for non-array.
-        loose: assumeArrayIterables,
         // njs has `Object.assign()`, so use it directly instead of the Babel's extends helper.
         useBuiltIns: true,
       }],
       [transformDotallRegex],
-      [transformForOf, {
-        // Assume that what you want to loop over is always an array. This is much more performant,
-        // but produces a wrong result for non-array iterables. This matches behaviour of TypeScript
-        // transpiler with disabled `downlevelIteration` and TypeScript also warns you when used for
-        // non-array.
-        assumeArray: assumeArrayIterables,
-      }],
+      [transformForOf],
       [transformNewTarget],
       [transformObjectSuper],
-      [transformParameters, {
-        // This is more performant, but default values will be counted into the arity of the function
-        // which is against spec. Also it matches behaviour of TypeScript's transpiler.
-        loose: looseParameters,
-      }],
-      [transformSpread, {
-        // Assume that all iterables are arrays. This more performant, but produces a wrong result
-        // for non-arrays. This matches behaviour of TypeScript transpiler with disabled
-        // `downlevelIteration` and TypeScript also warns you when used for non-array.
-        loose: assumeArrayIterables,
-      }],
+      [transformParameters],
+      [transformSpread],
       [transformUnicodeRegex],
     ],
   }

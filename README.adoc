@@ -41,15 +41,6 @@ yarn add --dev {npm-name}
 }
 ----
 
-[source, json, subs="+attributes"]
-----
-{
-  "presets": [
-    ["{npm-name}", { "assumeArrayIterables": false }]
-  ]
-}
-----
-
 
 === Via CLI
 
@@ -65,60 +56,6 @@ require('@babel/core').transform('code', {
   presets: [require('{npm-name}')],
 })
 ----
-
-
-== Options
-
-=== `assumeArrayIterables`
-`boolean`, defaults to `true`
-
-Assume that all iterables used in `for\...of` loops, {array-spread-mdn-uri}[array spread syntax] and {array-destructuring-mdn-uri}[array destructuring] are arrays.
-This produces more compact and significantly more performant code, but it will fail in runtime if the iterable is not an array.
-
-TypeScript transpiler uses the same approach for ES5 target when `downlevelIteration` is disabled.
-It also indicates error when the iterable is not an array.
-
-It sets the following plugin options:
-
-* {babel-doc-uri}/babel-plugin-transform-for-of#assumearray[for-of]: `assumeArray`
-* {babel-doc-uri}/babel-plugin-transform-spread#loose[spread]: `loose`
-* {babel-doc-uri}/babel-plugin-transform-destructuring#loose[destructuring]: `loose`
-
-
-=== `looseClasses`
-`boolean`, defaults to `true`
-
-Define class methods and properties using a simple assignment expression instead of `Object.defineProperty()`.
-This produces more compact and performant code, but it might produce unexpected results in some (corner) cases.
-TypeScript transpiler uses the same approach.
-
-It sets the following plugin options:
-
-* {babel-doc-uri}/babel-plugin-transform-classes#loose[classes]: `loose`
-
-
-=== `looseObjectRestSpread`
-`boolean`, defaults to `true`
-
-Transform {object-rest-spread-mdn-uri}[object rest/spread properties] using `Object.assign()` instead of Babel’s `objectSpread` helper.
-This produces more compact and performant code, but it might produce unexpected results in some (corner) cases (when overwriting read-only target property).
-TypeScript transpiler uses the same approach.
-
-It sets the following plugin options:
-
-* {babel-doc-uri}/babel-plugin-proposal-object-rest-spread#loose[object-rest-spread]: `loose`
-
-
-=== `looseParameters`
-`boolean`, defaults to `true`
-
-In loose mode, function parameters with default values will be counted into the arity of the function.
-This is not spec behaviour where these parameters do not add to function arity, but it produces more compact and performant code.
-TypeScript transpiler uses the same approach.
-
-It sets the following plugin options:
-
-* {babel-doc-uri}/babel-plugin-transform-parameters#loose[parameters]: `loose`
 
 
 == Plugins
@@ -344,6 +281,21 @@ The *State* column is one of:
 | {not-needed}
 |
 |===
+
+
+== Enabled Assumptions
+
+The following assumptions are enabled for better performance and match with the behaviour of the TypeScript transpiler.
+
+* {babel-doc-uri}/assumptions#constantsuper[constantSuper] ({babel-plugin-uri}-transform-classes#loose[classes])
+* {babel-doc-uri}/assumptions#noclasscalls[noClassCalls] ({babel-plugin-uri}-transform-classes#loose[classes])
+* {babel-doc-uri}/assumptions#setclassmethods[setClassMethods] ({babel-plugin-uri}-transform-classes#loose[classes])
+* {babel-doc-uri}/assumptions#superiscallableconstructor[superIsCallableConstructor] ({babel-plugin-uri}-transform-classes#loose[classes])
+* {babel-doc-uri}/assumptions#ignorefunctionlength[ignoreFunctionLength] ({babel-plugin-uri}-transform-parameters#loose[parameters])
+* {babel-doc-uri}/assumptions#iterableisarray[iterableIsArray] ({babel-plugin-uri}-transform-for-of#assumearray[for-of], {babel-plugin-uri}-transform-spread#loose[spread], {babel-plugin-uri}-transform-destructuring#loose[destructuring])
+* {babel-doc-uri}/assumptions#nodocumentall[noDocumentAll]
+* {babel-doc-uri}/assumptions#nonewarrows[noNewArrows]
+* {babel-doc-uri}/assumptions#setspreadproperties[setSpreadProperties] ({babel-plugin-uri}-proposal-object-rest-spread#loose[object-rest-spread])
 
 endif::npm-readme[]
 
