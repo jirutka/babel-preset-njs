@@ -14,7 +14,7 @@ image:https://github.com/{gh-name}/workflows/{ci-workflow}/badge.svg[CI State, l
 endif::env-github[]
 
 A https://babeljs.io[Babel] https://babeljs.io/docs/en/presets[preset] for transforming JavaScript code with modern language features into code compatible with https://github.com/nginx/njs[njs] ≥0.7.0 (NGINX JavaScript).
-This preset includes support for all the ECMAScript features that TypeScript supports (https://tc39.es/process-document/[Stage] 3+) -- see <<Plugins>> for a complete list.
+This preset includes support for all the ECMAScript features up to ES2021 -- see <<Plugins>> for a complete list.
 
 **TIP:** Take a look at https://github.com/jirutka/njs-typescript-starter[njs-typescript-starter] for a complete starter template for developing njs scripts for https://nginx.org[NGINX] server in https://www.typescriptlang.org[TypeScript] (including integration tests).
 
@@ -132,7 +132,7 @@ The list of included Babel plugins is available https://github.com/{gh-name}/blo
 
 endif::npm-readme[]
 ifndef::npm-readme[]
-The following table lists all relevant https://babeljs.io/docs/en/plugins#transform-plugins[Babel transform plugins] for ECMAScript features in at least https://tc39.es/process-document/[stage 3].
+The following table lists all relevant https://babeljs.io/docs/en/plugins#transform-plugins[Babel transform plugins] for ECMAScript features up to ES2021.
 
 The *State* column is one of:
 
@@ -342,26 +342,6 @@ The *State* column is one of:
 | {babel-plugin-uri}-proposal-numeric-separator[numeric-separator]
 | ES2021
 | {not-needed}
-|
-
-| {babel-plugin-uri}-proposal-class-properties[class-properties]
-| ES2022
-|
-|
-
-| {babel-plugin-uri}-proposal-class-static-block[class-static-block]
-| ES2022
-|
-|
-
-| {babel-plugin-uri}-proposal-private-methods[private-methods]
-| ES2022
-|
-|
-
-| {babel-plugin-uri}-proposal-private-property-in-object[private-property-in-object]
-| ES2022
-|
 |
 |===
 
