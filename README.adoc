@@ -96,7 +96,6 @@ It sets the following plugin options:
 
 * {babel-doc-uri}/babel-plugin-transform-classes#loose[classes]: `loose`
 * {babel-doc-uri}/babel-plugin-proposal-class-properties#loose[class-properties]: `loose`
-* {babel-doc-uri}/babel-plugin-proposal-private-property-in-object#loose[private-property-in-object]: `loose`
 
 
 === `looseObjectRestSpread`
@@ -363,7 +362,7 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-proposal-private-property-in-object[private-property-in-object]
 | ES2022
-| {included}
+|
 |
 |===
 

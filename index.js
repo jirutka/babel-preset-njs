@@ -7,7 +7,6 @@ const proposalLogicalAssignmentOperators = require('@babel/plugin-proposal-logic
 const proposalObjectRestSpread = require('@babel/plugin-proposal-object-rest-spread')
 const proposalOptionalCatchBinding = require('@babel/plugin-proposal-optional-catch-binding')
 const proposalOptionalChaining = require('@babel/plugin-proposal-optional-chaining')
-const proposalPrivatePropertyInObject = require('@babel/plugin-proposal-private-property-in-object')
 const proposalUnicodePropertyRegex = require('@babel/plugin-proposal-unicode-property-regex')
 const transformClasses = require('@babel/plugin-transform-classes')
 const transformDestructuring = require('@babel/plugin-transform-destructuring')
@@ -71,10 +70,6 @@ module.exports = declare((api, opts) => {
       [proposalOptionalChaining, {
         // This is more performant and completely safe in non-browser environment.
         loose: true,
-      }],
-      [proposalPrivatePropertyInObject, {
-        // This must match `loose` in proposal-class-properties.
-        loose: looseClasses,
       }],
       [proposalUnicodePropertyRegex, {
         // njs doesn't support unicode flag yet (`/foo/u`).
