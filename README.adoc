@@ -95,7 +95,6 @@ TypeScript transpiler uses the same approach.
 It sets the following plugin options:
 
 * {babel-doc-uri}/babel-plugin-transform-classes#loose[classes]: `loose`
-* {babel-doc-uri}/babel-plugin-proposal-class-properties#loose[class-properties]: `loose`
 
 
 === `looseObjectRestSpread`
@@ -347,7 +346,7 @@ The *State* column is one of:
 
 | {babel-plugin-uri}-proposal-class-properties[class-properties]
 | ES2022
-| {included}
+|
 |
 
 | {babel-plugin-uri}-proposal-class-static-block[class-static-block]

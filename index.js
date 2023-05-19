@@ -1,7 +1,6 @@
 const { declare } = require('@babel/helper-plugin-utils')
 const { OptionValidator } = require('@babel/helper-validator-option')
 
-const proposalClassProperties = require('@babel/plugin-proposal-class-properties')
 const proposalExportNamespaceFrom = require('@babel/plugin-proposal-export-namespace-from')
 const proposalLogicalAssignmentOperators = require('@babel/plugin-proposal-logical-assignment-operators')
 const proposalObjectRestSpread = require('@babel/plugin-proposal-object-rest-spread')
@@ -50,12 +49,6 @@ module.exports = declare((api, opts) => {
 
   return {
     plugins: [
-      [proposalClassProperties, {
-        // Define properties using an assignment expression instead of `Object.defineProperty`.
-        // This is more performant, but it might produce unexpected results in some (corner) cases.
-        // TypeScript transpiles class properties in the same way.
-        loose: looseClasses,
-      }],
       [proposalExportNamespaceFrom],
       [proposalLogicalAssignmentOperators],
       [proposalObjectRestSpread, {
