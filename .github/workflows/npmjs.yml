@@ -9,13 +9,17 @@ jobs:
     steps:
       - name: Install asciidoctor and pandoc
         run: sudo apt-get install asciidoctor pandoc
+
       - uses: actions/checkout@v3
+
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
+
       - run: yarn install
+
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
