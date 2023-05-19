@@ -15,6 +15,7 @@
     "njs",
     "nginx"
   ],
+  "type": "commonjs",
   "main": "index.js",
   "files": [
     "index.js",
