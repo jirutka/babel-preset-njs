@@ -100,7 +100,7 @@ module.exports = declare((api, opts) => {
       }],
       [proposalUnicodePropertyRegex, {
         // njs doesn't support unicode flag yet (`/foo/u`).
-        useUnicodeFlag: true,
+        useUnicodeFlag: false,
       }],
       [transformBlockScoping],
       [transformClasses, {
